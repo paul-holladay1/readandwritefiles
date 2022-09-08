@@ -19,12 +19,26 @@ def main():
 
     next(file_contents)
 
-    month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     
+    i = '1'
+    total = 0
+    count = 0
    
     for line in file_contents:
-        outfile.write(format((line[0]), '20'))
-        outfile.write(format((line[1]), '20') + '\n')
+        if line[0] == i:
+            total += int(line[1])
+            count += 1
+        else:
+            total = total/count
+            outfile.write(str(months[int(i)-1]) + ',' + (str(total)) + '\n')
+            i = line[0]
+
+    total = total/count
+    outfile.write(str(months[int(i)-1]) + ',' + (str(total)) + '\n') 
+
+            
+
         
 
         
